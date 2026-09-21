@@ -18,3 +18,5 @@ Premium animated emotional mini-site platform MVP.
 ```bash
 npm start
 ```
+
+- 10 distinct motion systems across the premium template catalog
