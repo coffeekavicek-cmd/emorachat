@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#160f12">
+  <meta name="description" content="EMORA — qalbdagi gaplarni esda qoladigan lahzaga aylantiring.">
+  <title>EMORA · Aytolmagan gaplar</title>
+  <link rel="stylesheet" href="./theme.css">
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a class="identity" href="#intro" aria-label="EMORA boshiga qaytish"><span class="identity-mark">E.</span> <span>EMORA <small>STORIES</small></span></a>
+    <span class="edition">LOVE CONFESSION / Nº 01</span>
+    <div class="top-actions"><a class="create-mine" id="createMine" href="./editor.html">Shu shablonni tanlash ↗</a>
+      <button class="sound" id="sound" type="button" aria-label="Musiqani yoqish yoki o‘chirish" title="Musiqa"><span class="sound-bars" aria-hidden="true"><i></i><i></i><i></i></span><span id="soundLabel">Musiqa</span></button>
+      <button class="close-story" id="leave" type="button" title="Hikoyadan chiqish" aria-label="Hikoyadan chiqish">✕</button>
+    </div>
+  </header>
+
+  <aside class="chapter-rail" aria-label="Hikoya bosqichlari">
+    <span id="chapterNumber">01</span><i></i><span>06</span>
+  </aside>
+  <div class="progress" aria-hidden="true"><div id="progressBar"></div></div>
+  <main class="stage" id="stage" aria-live="polite">
+    <!-- 01 / The question -->
+    <section class="scene scene-intro active" id="intro" data-chapter="01" aria-labelledby="introTitle">
+      <div class="intro-streak" aria-hidden="true"></div>
+      <div class="intro-orbit orbit-one" aria-hidden="true"></div><div class="intro-orbit orbit-two" aria-hidden="true"></div>
+      <div class="intro-center">
+        <span class="eyebrow"><i></i> FAQAT SEN UCHUN</span>
+        <h1 id="introTitle"><span id="introCopy">Senga aytolmagan<br>bir gapim bor…</span><em id="introQuestion">Eshitishga tayyormisan?</em></h1>
+        <p class="intro-note">Javob berishdan oldin yuragingga quloq sol.</p>
+        <div class="choice-arena" id="choiceArena">
+          <button type="button" id="yes" class="button yes">Ha, tayyorman <span aria-hidden="true">↗</span></button>
+          <button type="button" id="no" class="button no">Yo‘q <span aria-hidden="true">♡</span></button>
+        </div>
+        <span class="intro-footnote">* yuraging “ha” desa, bos</span>
+      </div>
+      <div class="vertical-note">A STORY WRITTEN FOR ONE PERSON</div>
+      <div class="bottom-hint">001 <span>↘</span> AN UNFINISHED SENTENCE</div>
+    </section>
+
+    <!-- 02 / Time with you -->
+    <section class="scene scene-time" id="time" data-chapter="02" aria-labelledby="timeTitle" hidden>
+      <div class="time-halo" aria-hidden="true"></div>
+      <div class="scene-frame time-frame">
+        <span class="eyebrow">01 — VAQT VA XOTIRALAR</span>
+        <p class="overline" id="counterLead">Sen bilan tanishganimga</p>
+        <h2 id="timeTitle" class="time-headline">Vaqt shunchaki<br><i>o‘tmagan.</i></h2>
+        <div class="time-grid" aria-label="Tanishganimizdan beri o‘tgan vaqt">
+          <div class="time-cell"><strong data-count="years">00</strong><span>YIL</span></div>
+          <div class="time-cell"><strong data-count="months">00</strong><span>OY</span></div>
+          <div class="time-cell"><strong data-count="days">00</strong><span>KUN</span></div>
+          <div class="time-cell"><strong data-count="hours">00</strong><span>SOAT</span></div>
+        </div>
+        <div class="time-rule"><span></span><i>✳</i><span></span></div>
+        <p class="scene-emotion" id="bridge">Ammo haligacha senga aytolmagan bir gapim bor.</p>
+        <button class="button outline next" data-next="photos" type="button">O‘sha gapni bilishni xohlaysanmi? <span>→</span></button>
+      </div>
+      <div class="scene-index">THE TIME WE SHARE — 02 / 06</div>
+    </section>
+
+    <!-- 03 / Personal photo gallery -->
+    <section class="scene scene-photos" id="photos" data-chapter="03" aria-labelledby="photosTitle" hidden>
+      <div class="photos-masthead"><span class="eyebrow">02 — SENI KO‘RGANIMDA</span><h2 id="photosTitle"><i id="galleryHeading">Senda men sevib qolgan<br>mingta mayda mo‘jiza bor.</i></h2></div>
+      <div class="editorial-gallery">
+        <figure class="photo-card main-photo"><img id="photoOne" src="assets/photo-1.webp" alt="Gullar bilan unutilmas bir lahza" loading="lazy"><figcaption><span>01 / 03</span><p id="complimentOne">Tabassuming — men qayta-qayta ko‘rishni istaydigan manzara.</p></figcaption></figure>
+        <figure class="photo-card photo-b"><img id="photoTwo" src="assets/photo-2.webp" alt="Guldasta bilan yorqin xotira" loading="lazy"><figcaption><span>02 / 03</span><p id="complimentTwo">Sen bor joyda eng oddiy kun ham bir bayramdek tuyuladi.</p></figcaption></figure>
+        <figure class="photo-card photo-c"><img id="photoThree" src="assets/photo-3.webp" alt="Birga qoladigan yana bir go‘zal xotira" loading="lazy"><figcaption><span>03 / 03</span><p id="complimentThree">Sening kulgingni eshitsam, butun dunyo bir lahzaga tinchigandek bo‘ladi.</p></figcaption></figure>
+      </div>
+      <div class="photos-foot"><span>YOUR PRESENCE IS MY FAVORITE PLACE.</span><button class="button outline next" data-next="film" type="button">Bizning kichkina kinomiz <span>→</span></button></div>
+    </section>
+
+    <!-- 04 / Video -->
+    <section class="scene scene-film" id="film" data-chapter="04" aria-labelledby="filmTitle" hidden>
+      <div class="film-backdrop"></div>
+      <div class="film-inner">
+        <span class="eyebrow">03 — BIRGA O‘TGAN LAHZALAR</span>
+        <h2 id="filmTitle"><i id="videoHeading">Bizning kichkina kinomiz</i></h2>
+        <div class="film-shell" id="filmShell">
+          <div class="film-topline"><span>EMORA ORIGINAL MEMORY</span><span>▶ 00:00</span></div>
+          <div class="film-placeholder" id="filmPlaceholder" hidden><span>YOUR MOVING MEMORY</span><strong>Shu yerda sening videong bo‘ladi.</strong><small>Video yuklanganda bu sahifa jonlanadi.</small></div>
+          <video id="video" controls preload="metadata" playsinline poster="assets/photo-2.webp"><source src="assets/sample-video.mp4" type="video/mp4">Brauzeringiz videoni qo‘llab-quvvatlamaydi.</video>
+          <span class="film-corner top-left"></span><span class="film-corner top-right"></span><span class="film-corner bottom-left"></span><span class="film-corner bottom-right"></span>
+        </div>
+        <p class="film-caption" id="videoCaption">Senga atalgan yana bir xotira.</p>
+        <button class="button outline next" data-next="letter" type="button">Endi oxirgi xatni och <span>→</span></button>
+      </div>
+    </section>
+
+    <!-- 05 / The letter -->
+    <section class="scene scene-letter" id="letter" data-chapter="05" aria-labelledby="letterTitle" hidden>
+      <div class="letter-light" aria-hidden="true"></div>
+      <div class="letter-inner">
+        <span class="eyebrow">04 — FAQAT IKKIMIZ UCHUN</span>
+        <h2 id="letterTitle"><i id="letterHeading">Bitta xat. Mingta<br>aytilmagan gap.</i></h2>
+        <p class="letter-prompt" id="letterPrompt">Bu xatni ochmaguningcha, eng muhim gap aytilmaganicha qoladi.</p>
+        <button class="envelope" type="button" id="openLetter" aria-label="Sevgi xatini ochish" aria-expanded="false">
+          <span class="envelope-back"></span><span class="envelope-paper"><span>TO: <b id="envelopeTo">SEVGILIM</b></span><i>faqat sen uchun</i></span><span class="envelope-flap"></span><span class="envelope-front"></span><span class="wax">E.</span>
+        </button>
+        <article class="letter-sheet" id="letterSheet" aria-label="Sevgi xati" hidden><span class="letter-salutation">Azizim,</span><p id="letterText"></p><span class="signature" id="signature">Doim seni sevuvchi inson ♡</span><button type="button" class="button next outline" data-next="final">Yakuniy sahifa <span>→</span></button></article>
+      </div>
+    </section>
+
+    <!-- 06 / Epilogue -->
+    <section class="scene scene-final" id="final" data-chapter="06" aria-labelledby="finalTitle" hidden>
+      <div class="final-aura" aria-hidden="true"></div><div class="final-aura secondary" aria-hidden="true"></div>
+      <div class="final-inner"><span class="eyebrow">EPILOGUE · WITH ALL MY HEART</span><div class="final-symbol">♡</div><h2 id="finalTitle"><i id="finalHeading">Hammasining javobi — sen.</i></h2><p id="finalLine">Har bir keyingi sahifada ham yonimda bo‘lishingni xohlayman.</p><span class="final-name" id="finalName">— Seni sevuvchi inson</span><div class="final-actions"><button type="button" class="button yes" id="replay">Yana bir bor boshidan ↺</button><button type="button" class="button outline" id="copyLink">Linkni nusxalash ↗</button></div></div>
+    </section>
+
+    <section class="scene scene-exit" id="exit" hidden aria-labelledby="exitTitle"><div><span class="eyebrow">HAMMASI JOYIDA</span><h2 id="exitTitle">Bu hikoya seni kutadi.</h2><p>Istagan vaqtingda yana ochishing mumkin.</p><button type="button" class="button outline" id="resume">Davom ettirish →</button></div></section>
+  </main>
+
+  <audio id="backgroundMusic" preload="none" loop><source src="assets/sample-music.m4a" type="audio/mp4"></audio>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./sample-config.js"></script>
+  <script src="./experience.js" defer></script>
+</body>
+</html>
