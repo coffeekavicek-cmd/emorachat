@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://emora.example/templates/love-confession-cinema-01/schema",
+  "title": "EMORA / Love Confession Cinema 01",
+  "description": "Reusable customer content, independent of the template animation runtime.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "template", "recipient", "sender", "metAt", "intro", "question", "photos", "compliments", "letter"],
+  "properties": {
+    "version": {"type": "integer", "const": 1},
+    "template": {"type": "string", "const": "love-confession-cinema-01"},
+    "recipient": {"type": "string", "minLength": 1, "maxLength": 42},
+    "sender": {"type": "string", "maxLength": 42},
+    "metAt": {"type": "string", "format": "date-time", "description": "ISO 8601 timestamp with timezone"},
+    "intro": {"type": "string", "minLength": 1, "maxLength": 180},
+    "question": {"type": "string", "minLength": 1, "maxLength": 100},
+    "counterLead": {"type": "string", "maxLength": 100},
+    "bridge": {"type": "string", "maxLength": 240},
+    "galleryHeading": {"type": "string", "maxLength": 190},
+    "photos": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string", "maxLength": 1000}},
+    "compliments": {"type": "array", "minItems": 3, "maxItems": 3, "items": {"type": "string", "maxLength": 280}},
+    "video": {"type": "string", "maxLength": 1000},
+    "music": {"type": "string", "maxLength": 1000},
+    "videoHeading": {"type": "string", "maxLength": 100},
+    "videoCaption": {"type": "string", "maxLength": 150},
+    "letterHeading": {"type": "string", "maxLength": 100},
+    "letter": {"type": "string", "minLength": 1, "maxLength": 4000},
+    "finalHeading": {"type": "string", "maxLength": 120},
+    "finalLine": {"type": "string", "maxLength": 250},
+    "accent": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"},
+    "accentSoft": {"type": "string", "pattern": "^#[0-9a-fA-F]{6}$"}
+  }
+}

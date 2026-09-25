@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EMORA Studio · Sevgi izhori shabloni</title>
+  <link rel="stylesheet" href="./editor.css">
+</head>
+<body>
+  <div class="studio-shell">
+    <header class="studio-header"><div class="brand"><span>E.</span><div>EMORA <small>CREATOR STUDIO</small></div></div><span class="studio-tag">SHABLON / LOVE CINEMA 01</span><div class="header-actions"><button id="reset" class="ghost">Namuna kontenti</button><button id="export" class="ghost">JSON eksport ↓</button><button id="publish" class="primary">Shaxsiy link yaratish ↗</button></div></header>
+    <div class="studio-content">
+      <aside class="editor-panel">
+        <div class="intro-panel"><span>01 / SHAXSIYLASHTIRISH</span><h1>Bir hikoya.<br><i>Ming xil his.</i></h1><p>Bu shablonning animatsiyalari o‘zgarmaydi; har bir mijoz o‘z kontentini qo‘yadi. O‘zgarishlar o‘ngdagi telefonda jonli ko‘rinadi.</p></div>
+        <div class="tabs" role="tablist" aria-label="Sozlamalar"><button class="active" data-tab="story" role="tab" aria-selected="true">Hikoya</button><button data-tab="gallery" role="tab" aria-selected="false">Foto & video</button><button data-tab="letter" role="tab" aria-selected="false">Xat & uslub</button></div>
+        <form id="editorForm">
+          <section class="tab active" data-panel="story">
+            <label>Kim uchun? <input id="recipient" maxlength="42" placeholder="Masalan: Jasmina" required></label>
+            <label>Kimdan? <input id="sender" maxlength="42" placeholder="Masalan: Diyor"></label>
+            <label>Tanishgan sana va vaqt <input id="metAt" type="datetime-local"></label>
+            <label>1-sahifa: Birinchi jumla <textarea id="intro" rows="2" maxlength="180"></textarea></label>
+            <label>1-sahifa: Savol <input id="question" maxlength="100"></label>
+            <label>Vaqt sahifasidagi so‘z <input id="counterLead" maxlength="100"></label>
+            <label>Vaqtdan keyingi yashirin gap <textarea id="bridge" rows="2" maxlength="240"></textarea></label>
+          </section>
+          <section class="tab" data-panel="gallery" hidden>
+            <div class="tip">Namuna rasmlarini hozircha almashtirib ko‘r. Productionda tizim media-fayllarni serverga yuklab, har bir xaridor uchun alohida saqlaydi.</div>
+            <label>Foto sahifasi sarlavhasi <textarea id="galleryHeading" maxlength="190" rows="2"></textarea></label>
+            <div id="photosEditor"></div>
+            <label>Video sarlavhasi <input id="videoHeading" maxlength="100"></label>
+            <label>Video tagidagi gap <input id="videoCaption" maxlength="150"></label>
+            <label>Video URL <input id="videoUrl" type="text" placeholder="https://… yoki assets/video.mp4"></label>
+            <label>Video fayl bilan sinab ko‘rish <input id="videoFile" type="file" accept="video/mp4,video/webm,video/quicktime"><small>Tanlangan fayl faqat shu previewda ishlaydi, serverga yuborilmaydi.</small></label>
+            <label>Fon musiqasi URL <input id="musicUrl" type="text" placeholder="https://… yoki assets/music.m4a"></label>
+            <label>Musiqa fayli bilan sinab ko‘rish <input id="musicFile" type="file" accept="audio/*"><small>Brauzer ovozni “Ha” bosilgandan keyin yoqadi.</small></label>
+          </section>
+          <section class="tab" data-panel="letter" hidden>
+            <label>Xat sahifasi sarlavhasi <input id="letterHeading" maxlength="100"></label>
+            <label>Sevgi xati <textarea id="letter" rows="10" maxlength="4000"></textarea></label>
+            <label>Final sarlavhasi <input id="finalHeading" maxlength="120"></label>
+            <label>Final jumla <textarea id="finalLine" maxlength="250" rows="3"></textarea></label>
+            <div class="color-pickers"><label>Asosiy rang <input id="accent" type="color" value="#e7ad99"></label><label>Yordamchi rang <input id="accentSoft" type="color" value="#f4d4c8"></label></div>
+            <div class="tip">Mijoz barcha maydonlarni kiritadi, shablon engine esa shu JSON ma’lumotlarini sahnalarga joylaydi. Har bir mijozga alohida link berish backend vazifasi.</div>
+          </section>
+        </form>
+        <div class="editor-footer"><button id="download" class="primary wide">Konfiguratsiyani yuklab olish ↓</button><p id="editorStatus" role="status">Namuna kontenti yuklandi.</p><div class="published" id="published" hidden><input id="publishedLink" readonly aria-label="Shaxsiy sayt manzili"><button type="button" id="copyPublished" class="ghost">Nusxalash</button></div></div>
+      </aside>
+      <section class="preview-panel"><div class="preview-heading"><div><span>LIVE PREVIEW</span><h2>Oluchi qanday ko‘radi</h2></div><button id="refreshPreview" class="ghost">Boshidan ↺</button></div><div class="preview-device"><div class="preview-island"></div><iframe id="preview" title="Sevgi izhori shabloni jonli ko‘rinishi" src="./index.html?editor=1" loading="eager"></iframe><div class="preview-indicator"></div></div><div class="preview-foot"><span>● LIVE</span><p>“Ha” tugmasini bosib, butun tajribani sinab ko‘r.</p><a href="./index.html" target="_blank" rel="noopener">To‘liq ekran ↗</a></div></section>
+    </div>
+  </div>
+  <script src="./sample-config.js"></script>
+  <script src="./editor.js" defer></script>
+</body>
+</html>
