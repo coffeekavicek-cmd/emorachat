@@ -7,7 +7,7 @@ import { randomBytes } from "node:crypto";
 
 const root = join(fileURLToPath(new URL(".", import.meta.url)), "public");
 const port = Number(process.env.PORT || 3000);
-const mime = {".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",".svg":"image/svg+xml",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",".mp3":"audio/mpeg",".mp4":"video/mp4",".ico":"image/x-icon"};
+const mime = {".html":"text/html; charset=utf-8",".css":"text/css; charset=utf-8",".js":"text/javascript; charset=utf-8",".json":"application/json; charset=utf-8",".svg":"image/svg+xml",".png":"image/png",".jpg":"image/jpeg",".jpeg":"image/jpeg",".webp":"image/webp",".mp3":"audio/mpeg",".m4a":"audio/mp4",".webm":"video/webm",".mp4":"video/mp4",".ico":"image/x-icon"};
 const reactionSet = new Set(["🥹","❤️","😍","😭","✨"]);
 let storeFile = "/tmp/emora-store.json";
 let writeChain = Promise.resolve();
@@ -26,7 +26,24 @@ function slug(){return randomBytes(5).toString("base64url").toLowerCase()}
 function json(res,status,data){res.writeHead(status,{"content-type":"application/json; charset=utf-8","cache-control":"no-store"});res.end(JSON.stringify(data))}
 async function body(req){return await new Promise((resolve,reject)=>{let raw="";req.on("data",c=>{raw+=c;if(raw.length>100_000){reject(new Error("too large"));req.destroy();}});req.on("end",()=>{try{resolve(raw?JSON.parse(raw):{})}catch{reject(new Error("bad json"))}});req.on("error",reject)})}
 function safeFile(pathname){const decoded=decodeURIComponent(pathname);const clean=normalize(decoded).replace(/^([.][.][/\\])+/g,"").replace(/^[/\\]+/,"");const full=join(root,clean||"index.html");if(!full.startsWith(root+sep)&&full!==root)throw new Error("bad path");return full}
-function cleanSite(input={}){const categories=new Set(["birthday","apology","love","proposal","wedding"]);return {category:categories.has(input.category)?input.category:"birthday",template:String(input.template||"birthday-1").slice(0,40),recipient:String(input.recipient||"Sen").slice(0,32),sender:String(input.sender||"").slice(0,32),message:String(input.message||"").slice(0,280),photo:/^https?:\/\//i.test(String(input.photo||""))?String(input.photo).slice(0,1000):"",accent:/^#[0-9a-f]{6}$/i.test(String(input.accent||""))?input.accent:"#ff6fae",secret:String(input.secret||"").slice(0,90),lang:["uz","ru","en"].includes(input.lang)?input.lang:"uz"}}
+function cleanSite(input={}){
+  const categories=new Set(["birthday","apology","love","proposal","wedding"]);
+  const site={category:categories.has(input.category)?input.category:"birthday",template:String(input.template||"birthday-1").slice(0,40),recipient:String(input.recipient||"Sen").slice(0,42),sender:String(input.sender||"").slice(0,42),message:String(input.message||"").slice(0,280),photo:/^https?:\/\//i.test(String(input.photo||""))?String(input.photo).slice(0,1000):"",accent:/^#[0-9a-f]{6}$/i.test(String(input.accent||""))?input.accent:"#ff6fae",secret:String(input.secret||"").slice(0,90),lang:["uz","ru","en"].includes(input.lang)?input.lang:"uz"};
+  if(site.template!=="love-confession-cinema-01") return site;
+  const str=(key,max,otherwise="")=>String(input[key]??otherwise).slice(0,max);
+  const url=v=>{const s=String(v||"").slice(0,1000);return /^(?:https?:\/\/|assets\/)/i.test(s)?s:"";};
+  const validDate=new Date(input.metAt||"");
+  return {...site,category:"love",version:1,metAt:Number.isFinite(+validDate)?validDate.toISOString():new Date().toISOString(),
+    intro:str("intro",180,"Senga aytolmagan bir gapim bor…"),question:str("question",100,"Eshitishga tayyormisan?"),
+    counterLead:str("counterLead",100,"Sen bilan tanishganimga"),bridge:str("bridge",240),
+    galleryHeading:str("galleryHeading",190),
+    photos:(Array.isArray(input.photos)?input.photos:[]).slice(0,3).map(url),
+    compliments:(Array.isArray(input.compliments)?input.compliments:[]).slice(0,3).map(v=>String(v||"").slice(0,280)),
+    video:url(input.video),music:url(input.music),videoHeading:str("videoHeading",100),videoCaption:str("videoCaption",150),
+    letterHeading:str("letterHeading",100),letter:str("letter",4000),finalHeading:str("finalHeading",120),finalLine:str("finalLine",250),
+    accentSoft:/^#[0-9a-f]{6}$/i.test(String(input.accentSoft||""))?input.accentSoft:"#f4d4c8"
+  };
+}
 
 const server=http.createServer(async(req,res)=>{
   const url=new URL(req.url,"http://localhost");
